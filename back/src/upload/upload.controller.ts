@@ -12,13 +12,13 @@ export class UploadController {
 		if (mimetype != "image/jpeg" && mimetype != "image/jpg" && mimetype != "image/png")
 			throw new ForbiddenException('Format not valid');
 		const uuid = uuidv4();
-		if (!fs.existsSync("uploads")){
-			fs.mkdirSync("uploads");
+		if (!fs.existsSync("../uploads")){
+			fs.mkdirSync("../uploads");
 		}
 		const ext = mimetype.split('/')[1];
 		const filename = `${uuid}.${ext}`;
 		console.log(filename);
-		fs.writeFile(`uploads/${filename}`, file.buffer,  "binary", (err) => {
+		fs.writeFile(`../uploads/${filename}`, file.buffer,  "binary", (err) => {
 			if (err) {
 				throw new BadRequestException();
 			}

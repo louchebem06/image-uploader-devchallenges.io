@@ -5,7 +5,7 @@ import { createReadStream } from 'fs';
 export class ImageController {
 	@Get(':image')
 	getImage(@Param('image') imageName: string) {
-		const file = createReadStream("uploads/" + imageName);
+		const file = createReadStream("../uploads/" + imageName);
 		return new StreamableFile(file);
 	}
 }
