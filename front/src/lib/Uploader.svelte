@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let files: any;
+	
 	let input: any;
 
 	function dropHandler(event: any) {
@@ -7,16 +9,8 @@
 			alert("Only one file");
 			return ;
 		}
-		if (event.dataTransfer.files[0].type != "image/jpeg"
-			&& event.dataTransfer.files[0].type != "image/jpg"
-			&& event.dataTransfer.files[0].type != "image/png")
-		{
-			alert("Format not authorize");
-			return ;
-		}
 		const file = event.dataTransfer.files[0];
-		//input.value = file.name;
-		console.log(file.name);
+		files = event.dataTransfer.files;
 	}
 
 	function dragOverHandler(event: any) {
@@ -28,15 +22,17 @@
 	}
 </script>
 
-<input bind:this={input} type="file" accept="image/jpeg, image/png, image/jpg" />
+<input hidden bind:files={files} bind:this={input} type="file" accept="image/*" />
 
 <h1>Upload your image</h1>
 <p>File should be Jpeg, Png,...</p>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
 	class="dropDiv"
 	on:drop={dropHandler}
 	on:dragover={dragOverHandler}
+	on:click={getInput}
 >
 	<img src="/image.svg" alt="" />
 	<p>Drag & Drop your image here</p>
@@ -83,6 +79,7 @@
 		border: 1px dashed #97BEF4;
 		border-radius: 12px;
 		margin-top: 30px;
+		cursor: pointer;
 	}
 
 	.dropDiv img {

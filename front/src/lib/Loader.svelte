@@ -1,3 +1,35 @@
+<script lang="ts">
+	import {PUBLIC_HOST_BACK} from '$env/static/public';
+
+	export let files: any;
+	export let end: boolean;
+	export let url: string;
+
+	let data = new FormData()
+	data.append('file', files[0]);
+
+	fetch(`${PUBLIC_HOST_BACK}/api/upload`,
+		{
+			method: 'POST',
+			body: data
+		})
+		.then(async (response: any) => {
+			console.log(await response);
+			let json = await response.json();
+			if (json.statusCode == 200) {
+				url = `${PUBLIC_HOST_BACK}${json.message}`;
+				end = true;
+			} else {
+				alert("Error fetch");
+				files = undefined;
+			}
+		})
+		.catch(async (e: any) => {
+			alert("Error catch");
+			files = undefined;
+		})
+</script>
+
 <h1>Uploading...</h1>
 
 <div class="progress">

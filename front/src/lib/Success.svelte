@@ -1,5 +1,5 @@
 <script lang="ts">
-	let src = "https://fastly.picsum.photos/id/870/536/354.jpg?blur=2&grayscale&hmac=A5T7lnprlMMlQ18KQcVMi3b7Bwa1Qq5YJFp8LSudZ84";
+	export let src: string;
 	let input: any;
 
 	function copy() {
