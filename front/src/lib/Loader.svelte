@@ -12,7 +12,7 @@
 		{
 			method: 'POST',
 			body: data,
-			mode: 'no-cors'
+			redirect: 'follow'
 		})
 		.then(async (response: any) => {
 			console.log(await response);
