@@ -1,7 +1,8 @@
 <script lang="ts">
-  import Uploader from "$lib/Uploader.svelte";
-  import Loader from "$lib/Loader.svelte";
-  import Success from "$lib/Success.svelte";
+	import { PUBLIC_HOST_API } from '$env/static/public'
+	import Uploader from "$lib/Uploader.svelte";
+	import Loader from "$lib/Loader.svelte";
+	import Success from "$lib/Success.svelte";
 </script>
 
 <svelte:head>
@@ -9,9 +10,10 @@
 </svelte:head>
 
 <div class="mainDiv">
-	<Uploader />
+	<p>{PUBLIC_HOST_API}</p>
+	<!-- <Uploader />
 	<Loader />
-	<Success />
+	<Success /> -->
 </div>
 
 <style>
