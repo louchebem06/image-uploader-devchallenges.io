@@ -11,8 +11,7 @@
 	fetch(`${PUBLIC_HOST_BACK}/api/upload`,
 		{
 			method: 'POST',
-			body: data,
-			redirect: 'follow'
+			body: data
 		})
 		.then(async (response: any) => {
 			console.log(await response);
