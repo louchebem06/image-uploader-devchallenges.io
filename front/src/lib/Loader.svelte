@@ -11,7 +11,8 @@
 	fetch(`${PUBLIC_HOST_BACK}/api/upload`,
 		{
 			method: 'POST',
-			body: data
+			body: data,
+			mode: 'no-cors'
 		})
 		.then(async (response: any) => {
 			console.log(await response);
